@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs");
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const notes = require("./db/db.json");
 const uuid = require("./helpers/uuid");
 
@@ -43,6 +43,7 @@ app.post("/api/notes", (req, res) => {
 
         fs.writeFile(
           "./db/db.json",
+
           JSON.stringify(parsedNotes, null, 4),
           (writeErr) =>
             writeErr
@@ -58,14 +59,11 @@ app.post("/api/notes", (req, res) => {
     };
 
     console.log(response);
-    res.status(201).json(response);
+    // work from here
+    res.status(200).json(notes)
   } else {
-    res.status(500).json("Error in posting review");
+    res.status(500).json("Error in posting note");
   }
-});
-
-app.get("/api/notes", (req, res) => {
-  res.status(200).json(notes);
 });
 
 app.get("/*", (req, res) => {
