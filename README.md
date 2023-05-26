@@ -2,7 +2,8 @@
 
 ## Description
 
-An application that uses Express.js to manage(write and save) notes for the user. Application is deployed to Heroku.
+An application that uses Express.js to manage(write, save, and delete) notes. Application is deployed to Heroku.
+[Note Taker App](https://note-taker6876.herokuapp.com/)
 
 ![SCREENSHOT1](./Assets/Images/Screenshot_1.jpg)
 ![SCREENSHOT2](./Assets/Images/Screenshot_2.jpg)
