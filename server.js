@@ -20,7 +20,18 @@ app.get("/notes", (req, res) => {
 });
 
 app.get("/api/notes", (req, res) => {
-  res.status(200).json(notes);
+  
+  var currentData;
+  fs.readFile("./db/db.json", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log(data);
+      currentData = JSON.parse(data);
+      console.log(currentData);
+      res.status(200).json(currentData);
+    }
+  });
 });
 
 app.post("/api/notes", (req, res) => {
@@ -60,7 +71,8 @@ app.post("/api/notes", (req, res) => {
 
     console.log(response);
     // work from here
-    res.status(200).json(notes)
+
+    res.status(200).json(response);
   } else {
     res.status(500).json("Error in posting note");
   }
